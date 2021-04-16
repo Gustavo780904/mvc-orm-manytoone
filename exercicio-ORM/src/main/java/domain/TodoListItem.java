@@ -1,19 +1,32 @@
-package com.santos.domain;
+package domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class TodoListItem implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	String nomeDoItem;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
+	String nomeDoItem;
+	@ManyToOne
+	@JoinColumn(name="TodoList_id", nullable = false)
 	TodoList lista;
 	public TodoListItem() {	}
 
 	public TodoListItem(String nomeDoItem, Integer id, TodoList lista) {
 		super();
-		this.nomeDoItem = nomeDoItem;
 		this.id = id;
+		this.nomeDoItem = nomeDoItem;
 		this.lista = lista;
 	}
 
