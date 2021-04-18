@@ -10,16 +10,26 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-
 @Entity
 public class TodoList implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Integer id;
-	String nome;
+	private Integer id;
+	private String nome;
+	
+	/*	
+	 * 	A variável (List) do tipo da classe "TodoListItem", que faz referencia à classe, 
+	é uma lista porque a relação é "muitos" (um para muitos). 
+		Como é bidirecional, em TodoListItem tb tem uma variável referente à classe TodoList.
+	Linkedlist é mais rapido que arrayList, quando for deletar e gravar registros com 
+	maior frequencia. Nesse caso onde os dados não tendem a ser alterados, melhor usar arrayList
+	 	O dono da relação é sempre a parte, nunca o todo
+	 	*/
+	
 	@OneToMany(mappedBy = "lista")
-	List<TodoListItem> items = new ArrayList<TodoListItem>();
+	private List<TodoListItem> items = new ArrayList<TodoListItem>();
 
 	public TodoList() {
 	}

@@ -1,5 +1,6 @@
 package com.santos.exercicio.exercicio2.domain;
 
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,44 +9,46 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.OneToMany;
 @Entity
-public class Library implements Serializable{
-
+public class Library implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Integer id;
-	String nome;
-//	List<Book> lista = new ArrayList<Book>();
-
-	public Library() {}
-
-	public Library(String nome) {
-	super();
-	this.nome = nome;
-}
-
-	public String getNome() {
-		return nome;
+	private Integer id;
+	private String name;
+	@OneToMany(mappedBy = "library_id")
+	private List<Book> books = new ArrayList<Book>();	
+	
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-//	public List<Book> getBooks() {
-//		return lista;
-//	}
+	public List<Book> getBooks() {
+		return books;
+	}
 
-//	public void setBooks(List<Book> books) {
-//		this.lista = books;
-//	}
+	public void setBooks(List<Book> books) {
+		this.books = books;
+	}
 
 	public Integer getId() {
 		return id;
 	}
 
+	public Library() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Library(String name) {
+		super();
+		this.name = name;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -70,5 +73,4 @@ public class Library implements Serializable{
 			return false;
 		return true;
 	}
-
 }

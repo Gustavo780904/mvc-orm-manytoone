@@ -2,7 +2,6 @@ package com.santos.exercicio.exercicio2.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,40 +9,38 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Book implements Serializable {
+public class Book implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String name;
+	private String nome;
 	@ManyToOne
-//	@Column(name = “library_id”, insertable = false, updatable = false)
-	private Integer library_id;
-//	private Library lista;
+	private Library library_id;
 
 	public Book() {
+		// TODO Auto-generated constructor stub
 	}
 
-	public Book(String name) {
+	public Book(String nome) {
 		super();
-		this.name = name;
+		this.nome = nome;
 	}
 
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public Integer getLibrary_id() {
+	public Library getLibrary_id() {
 		return library_id;
 	}
 
-	public void setLibrary_id(Integer library_id) {
+	public void setLibrary_id(Library library_id) {
 		this.library_id = library_id;
 	}
 
@@ -75,13 +72,5 @@ public class Book implements Serializable {
 			return false;
 		return true;
 	}
-
-//	public Library getLista() {
-//		return lista;
-//	}
-//
-//	public void setLista(Library lista) {
-//		this.lista = lista;
-//	}
 
 }
