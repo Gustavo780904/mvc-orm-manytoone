@@ -13,6 +13,9 @@ import com.santos.exercicio.exercicio2.domain.Book;
 import com.santos.exercicio.exercicio2.domain.Library;
 import com.santos.exercicio.exercicio2.repository.BookRepository;
 import com.santos.exercicio.exercicio2.repository.LibraryRepository;
+import com.santos.exercicio.exercicio3.domain.PostComment;
+import com.santos.exercicio.exercicio3.repository.PostCommentRepository;
+import com.santos.exercicio.exercicio3.repository.PostRepository;
 
 @SpringBootApplication
 public class ExerciciosOrm3Application implements CommandLineRunner {
@@ -26,6 +29,10 @@ public class ExerciciosOrm3Application implements CommandLineRunner {
 	@Autowired
 	BookRepository bookRepo;
 
+	@Autowired
+	PostCommentRepository postRepo;
+	@Autowired
+	PostRepository PostComRepo;
 	public static void main(String[] args) {
 		SpringApplication.run(ExerciciosOrm3Application.class, args);
 	}
@@ -34,6 +41,7 @@ public class ExerciciosOrm3Application implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		todoList();
 		library();
+		
 	}
 
 	public void todoList() {

@@ -1,47 +1,49 @@
-package com.santos.exercicio.exercicio2.domain;
+package com.santos.exercicio.exercicio3.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
-public class Book implements Serializable{
+public class Post implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String nome;
-	@ManyToOne
-	private Library library;
+	private String title;
+	@OneToMany(mappedBy = "review")
+	private List<PostComment> comment = new ArrayList<PostComment>();
 
-	public Book() {
+	public Post() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Book(String nome) {
+	public Post(String title) {
 		super();
-		this.nome = nome;
+		this.title = title;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public Library getLibrary_id() {
-		return library;
+	public List<PostComment> getComment() {
+		return comment;
 	}
 
-	public void setLibrary_id(Library library_id) {
-		this.library = library_id;
+	public void setComment(List<PostComment> comment) {
+		this.comment = comment;
 	}
 
 	public Integer getId() {
@@ -64,7 +66,7 @@ public class Book implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Book other = (Book) obj;
+		Post other = (Post) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -73,4 +75,11 @@ public class Book implements Serializable{
 		return true;
 	}
 
+	public void addComment(Class<Post> PostComment) {
+
+	}
+
+	public void removeComment(Class<Post> PostComment) {
+
+	}
 }

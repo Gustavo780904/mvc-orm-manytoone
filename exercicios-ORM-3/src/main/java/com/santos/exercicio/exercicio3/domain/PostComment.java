@@ -1,4 +1,4 @@
-package com.santos.exercicio.exercicio2.domain;
+package com.santos.exercicio.exercicio3.domain;
 
 import java.io.Serializable;
 
@@ -9,39 +9,40 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Book implements Serializable{
+public class PostComment implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String nome;
-	@ManyToOne
-	private Library library;
+	private Post post;
+	
+	@ManyToOne()
+	private String review;
 
-	public Book() {
+	public PostComment() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Book(String nome) {
+	public PostComment(Post post) {
 		super();
-		this.nome = nome;
+		this.post = post;
 	}
 
-	public String getNome() {
-		return nome;
+	public Post getPost() {
+		return post;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setPost(Post post) {
+		this.post = post;
 	}
 
-	public Library getLibrary_id() {
-		return library;
+	public String getReview() {
+		return review;
 	}
 
-	public void setLibrary_id(Library library_id) {
-		this.library = library_id;
+	public void setReview(String review) {
+		this.review = review;
 	}
 
 	public Integer getId() {
@@ -64,7 +65,7 @@ public class Book implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Book other = (Book) obj;
+		PostComment other = (PostComment) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
