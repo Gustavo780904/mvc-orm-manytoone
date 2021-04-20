@@ -16,6 +16,7 @@ public class Book implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
+	
 	@ManyToOne
 	private Library library;
 
@@ -36,12 +37,12 @@ public class Book implements Serializable{
 		this.nome = nome;
 	}
 
-	public Library getLibrary_id() {
+	public Library getLibrary() {
 		return library;
 	}
 
-	public void setLibrary_id(Library library_id) {
-		this.library = library_id;
+	public void setLibrary(Library library) {
+		this.library = library;
 	}
 
 	public Integer getId() {

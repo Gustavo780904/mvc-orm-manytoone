@@ -32,7 +32,8 @@ public class ExerciciosOrm3Application implements CommandLineRunner {
 	@Autowired
 	PostCommentRepository postRepo;
 	@Autowired
-	PostRepository PostComRepo;
+	PostRepository postComRepo;
+
 	public static void main(String[] args) {
 		SpringApplication.run(ExerciciosOrm3Application.class, args);
 	}
@@ -41,7 +42,7 @@ public class ExerciciosOrm3Application implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		todoList();
 		library();
-		
+
 	}
 
 	public void todoList() {

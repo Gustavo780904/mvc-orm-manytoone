@@ -18,7 +18,8 @@ public class Library implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
-	@OneToMany(mappedBy = "library_id")
+	
+	@OneToMany(mappedBy = "library")
 	private List<Book> books = new ArrayList<Book>();	
 	
 	public String getName() {

@@ -18,10 +18,9 @@ public class PostComment implements Serializable {
 	private Post post;
 	
 	@ManyToOne()
-	private String review;
+	private Post review;
 
 	public PostComment() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public PostComment(Post post) {
@@ -37,11 +36,11 @@ public class PostComment implements Serializable {
 		this.post = post;
 	}
 
-	public String getReview() {
+	public Post getReview() {
 		return review;
 	}
 
-	public void setReview(String review) {
+	public void setReview(Post review) {
 		this.review = review;
 	}
 
