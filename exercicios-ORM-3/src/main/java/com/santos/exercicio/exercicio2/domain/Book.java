@@ -21,7 +21,6 @@ public class Book implements Serializable{
 	private Library library;
 
 	public Book() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Book(String nome) {

@@ -15,7 +15,7 @@ public class PostComment implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private Post post;
+	private String post;
 	
 	@ManyToOne()
 	private Post review;
@@ -23,16 +23,16 @@ public class PostComment implements Serializable {
 	public PostComment() {
 	}
 
-	public PostComment(Post post) {
+	public PostComment(String post) {
 		super();
 		this.post = post;
 	}
 
-	public Post getPost() {
+	public String getPost() {
 		return post;
 	}
 
-	public void setPost(Post post) {
+	public void setPost(String post) {
 		this.post = post;
 	}
 

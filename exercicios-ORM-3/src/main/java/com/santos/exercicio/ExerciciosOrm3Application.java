@@ -13,6 +13,7 @@ import com.santos.exercicio.exercicio2.domain.Book;
 import com.santos.exercicio.exercicio2.domain.Library;
 import com.santos.exercicio.exercicio2.repository.BookRepository;
 import com.santos.exercicio.exercicio2.repository.LibraryRepository;
+import com.santos.exercicio.exercicio3.domain.Post;
 import com.santos.exercicio.exercicio3.domain.PostComment;
 import com.santos.exercicio.exercicio3.repository.PostCommentRepository;
 import com.santos.exercicio.exercicio3.repository.PostRepository;
@@ -42,6 +43,7 @@ public class ExerciciosOrm3Application implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		todoList();
 		library();
+		post();
 
 	}
 
@@ -94,5 +96,30 @@ public class ExerciciosOrm3Application implements CommandLineRunner {
 		lista.getBooks().add(lv2);
 		lista.getBooks().add(lv3);
 		lista.getBooks().add(lv4);
+	}
+	public void post() {
+		postRepo.deleteAll();
+		postComRepo.deleteAll();
+		
+		Post caibalion = new Post("O Caibalion");
+		PostComment commentCaibalion1 = new PostComment("O Caibalion é um livro que deve ser lido por aqueles que desejam alcançar a sabedoria");
+		PostComment commentCaibalion2 = new PostComment("Ideias que nos levam a conhecer a nós mesmos");
+		PostComment commentCaibalion3 = new PostComment("Deveriam ensinar O Caibalion nas escolas");
+		
+		caibalion.addComment(commentCaibalion1);
+		caibalion.addComment(commentCaibalion2);
+		caibalion.addComment(commentCaibalion3);
+		
+		postComRepo.save(caibalion);
+		postRepo.save(commentCaibalion1);
+		postRepo.save(commentCaibalion2);
+		postRepo.save(commentCaibalion3);
+		
+		Post silmarillion = new Post("O Silmarillion");
+		PostComment commentSilmarillion1 = new PostComment("Não entendi muito bem o filme, depois de ler o livro, me confundiu mais ainda");
+		PostComment commentSilmarillion2 = new PostComment("Um bela estória sobre a criação do Universo, genial!");
+		postComRepo.save(silmarillion);
+		postRepo.save(commentSilmarillion1);
+		postRepo.save(commentSilmarillion2);
 	}
 }

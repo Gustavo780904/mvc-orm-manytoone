@@ -18,11 +18,11 @@ public class Post implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String title;
+	
 	@OneToMany(mappedBy = "review")
 	private List<PostComment> comment = new ArrayList<PostComment>();
 
 	public Post() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Post(String title) {
@@ -75,11 +75,11 @@ public class Post implements Serializable {
 		return true;
 	}
 
-	public void addComment(Class<Post> PostComment) {
-
+	public void addComment(PostComment comment) {
+		getComment().add(comment);
 	}
 
-	public void removeComment(Class<Post> PostComment) {
-
+	public void removeComment(PostComment comment) {
+		getComment().remove(comment);
 	}
 }
